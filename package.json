@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/ninjaas/stampus/issues"
   },
-  "homepage": "https://github.com/ninjaas/stampus"
+  "homepage": "https://github.com/ninjaas/stampus",
+  "devDependencies": {
+    "stylus": "*"
+  }
 }
