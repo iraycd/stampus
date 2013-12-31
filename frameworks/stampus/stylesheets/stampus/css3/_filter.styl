@@ -1,0 +1,23 @@
+@import "shared"
+
+
+// Provides cross-browser support for the upcoming (?) css3 filter property.
+//
+// Each filter argument should adhere to the standard css3 syntax for the
+// filter property.
+// http://html5-demos.appspot.com/static/css/filters/index.html
+//
+// Example:
+//      filter(grayscale(100%))
+// Which generates:
+//
+//    -moz-filter: grayscale(100%);
+//    -webkit-filter: grayscale(100%);
+//    filter: grayscale(100%);
+//
+
+filter()
+    experimental(filter, arguments,
+        'moz', 'webkit', !'o', !'ms', !'khtml', 'official'
+    )
+
