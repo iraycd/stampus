@@ -1,0 +1,32 @@
+// Override `$default-background-origin` to change the default.
+
+@import "shared"
+
+$default-background-origin ?= content-box
+
+// Position the background off the edge of the padding, border or content
+//
+// * Possible values:
+//   * `padding-box`
+//   * `border-box`
+//   * `content-box`
+// * browser defaults to `padding-box`
+// * mixin defaults to `content-box`
+
+
+background-origin(box...)
+  // Older versions of webkit and mozilla use the deprecated short [border | padding | content]
+  dep0 = box[0] || $default-background-origin
+  dep1 = box[1]
+  dep0 = padding if dep0 == padding-box
+  dep0 = border  if dep0 == border-box
+  dep0 = content if dep0 == content-box
+  dep1 = padding if dep1 == padding-box
+  dep1 = border  if dep1 == border-box
+  dep1 = content if dep1 == content-box
+  experimental(background-origin, join(', ', dep0, dep1),
+    'moz', 'webkit', !'o', !'ms', !'khtml', !'official'
+  )
+  experimental(background-origin, box[0],
+    !'moz', !'webkit', 'o', 'ms', !'khtml', 'official'
+  )

@@ -1,0 +1,32 @@
+@import "shared"
+
+// The default value is `padding-box` -- the box model used by modern browsers.
+//
+// If you wish to do so, you can override the default constant with `border-box`
+//
+// To override to the default border-box model, use this code:
+//     $default-background-clip: border-box
+
+$default-background-clip ?= padding-box
+
+// Clip the background (image and color) at the edge of the padding or border.
+//
+// Legal Values:
+//
+//   * padding-box
+//   * border-box
+//   * text
+
+
+background-clip(box...)
+  // Older versions of webkit and mozilla use the deprecated short [border | padding]
+  dep0 = box[0] || $default-background-origin
+  dep1 = box[1]
+  dep0 = padding if dep0 == padding-box
+  dep0 = border  if dep0 == border-box
+  dep1 = padding if dep1 == padding-box
+  dep1 = border  if dep1 == border-box
+  experimental(background-clip, join(', ', dep0, dep1),
+    'moz', 'webkit', !'o', !'ms', !'khtml', !'official'
+  )
+  background-clip: length(box) ? arguments : $default-background-clip
