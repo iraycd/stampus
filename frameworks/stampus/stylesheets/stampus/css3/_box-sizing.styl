@@ -1,0 +1,37 @@
+@import "shared"
+
+// Change the box model for Mozilla, Webkit, IE8 and the future
+//
+// * Possible values:
+//   * content-box
+//   * border-box
+//
+// Examples:
+//
+//       #content-box
+//         box-sizing(content-box)
+//        
+//       #border-box
+//         box-sizing(border-box)
+//
+// Generated:
+//
+//       #content-box {
+//         -moz-box-sizing: content-box;
+//         -webkit-box-sizing: content-box;
+//         -ms-box-sizing: content-box;
+//         box-sizing: content-box;
+//       }
+//       #border-box {
+//         -moz-box-sizing: border-box;
+//         -webkit-box-sizing: border-box;
+//         -ms-box-sizing: border-box;
+//         box-sizing: border-box;
+//       }
+
+
+box-sizing()
+  experimental(box-sizing, arguments,
+    'moz', 'webkit', !'o', 'ms', !'khtml', 'official'
+  )
+

@@ -18,6 +18,29 @@ $default-box-shadow-spread ?= false
 // The default shadow inset?= inset or false (for standard shadow).
 $default-box-shadow-inset ?= false
 
+// The box-shadow mixins are used to apply an inset or drop shadow to a block element.
+// Examples:
+//
+// #box-shadow-default
+//   box-shadow()
+//
+// #box-shadow-custom
+//   box-shadow(red 2px 2px 10px)
+//
+// Which generates:
+//
+// #box-shadow-default {
+//   -moz-box-shadow: 0px 0px #333;
+//   -webkit-box-shadow: 0px 0px #333;
+//   box-shadow: 0px 0px #333;
+// }
+// #box-shadow-custom {
+//   -moz-box-shadow: #f00 2px 2px 10px 0px #333;
+//   -webkit-box-shadow: #f00 2px 2px 10px 0px #333;
+//   box-shadow: #f00 2px 2px 10px 0px #333;
+// }
+
+
 $box-shadow(inset = $default-box-shadow-inset,
             hoff = $default-box-shadow-h-offset,
             voff = $default-box-shadow-v-offset,
@@ -64,3 +87,4 @@ box-shadow(args...)
     color = args[i] || $default-box-shadow-color
     // Params are parsed :/
     $box-shadow($inset, hoff, voff, blur, spread, color)
+

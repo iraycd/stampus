@@ -1,0 +1,140 @@
+@import "shared"
+
+// This module provides mixins that pertain to the CSS3 Flexible Box.
+//
+//  Example:
+//
+//   .example
+//      display-box()
+//      box-orient(horizontal)
+//      box-align(stretch)
+//      box-direction(reverse)
+//      height: 200px
+//      width: 100%
+//      .content, .sidebar
+//        padding: 20px
+//      .content
+//        box-flex(4)
+//        background-color: #C5C1B4
+//      .sidebar
+//        box-flex(1)
+//        background-color: #375F99
+//        margin-right: 1px
+//
+//
+//  Generated: 
+//
+//    .example {
+//      display: -moz-box;
+//      display: -webkit-box;
+//      display: -ms-box;
+//      display: box;
+//      -moz-box-orient: horizontal;
+//      -webkit-box-orient: horizontal;
+//      -ms-box-orient: horizontal;
+//      box-orient: horizontal;
+//      -moz-box-align: stretch;
+//      -webkit-box-align: stretch;
+//      -ms-box-align: stretch;
+//      box-align: stretch;
+//      -moz-box-direction: reverse;
+//      -webkit-box-direction: reverse;
+//      -ms-box-direction: reverse;
+//      box-direction: reverse;
+//      height: 200px;
+//      width: 100%;
+//    }
+//    .example .content,
+//    .example .sidebar {
+//      padding: 20px;
+//    }
+//    .example .content {
+//      -moz-box-flex: 4;
+//      -webkit-box-flex: 4;
+//      -ms-box-flex: 4;
+//      box-flex: 4;
+//      background-color: #c5c1b4;
+//    }
+//    .example .sidebar {
+//      -moz-box-flex: 1;
+//      -webkit-box-flex: 1;
+//      -ms-box-flex: 1;
+//      box-flex: 1;
+//      background-color: #375f99;
+//      margin-right: 1px;
+//    }
+
+
+// Box sizing is imlemented uniformly across browsers thus far. Convenience mixin.
+$exp-box(prop, val)
+  experimental(prop, val,
+    'moz', 'webkit', !'o', 'ms', !'khtml', 'official'
+  )
+
+// Inserts the correct set of vendor prefixed values when display: box is set
+display-box()
+    experimental-value(display, box,
+      'moz', 'webkit', !'o', 'ms', !'khtml', 'official'
+    )
+
+
+$default-box-orient ?= horizontal
+$default-box-align ?= horizontal
+$default-box-flex ?= 0
+$default-box-flex-group ?= 1
+$default-box-ordinal-group ?= 1
+$default-box-direction ?= normal
+$default-box-lines ?= single
+$default-box-pack ?= start
+
+// Box orientation [ horizontal | vertical | inline-axis | block-axis | inherit ]
+box-orient(orient = $default-box-orient)
+  $exp-box(box-orient, orient)
+
+// Box align [ start | end | center | baseline | stretch ]
+box-align(alignment = $default-box-align)
+  $exp-box(box-align, alignment)
+
+// mixin which takes an int argument for box flex. Apply this to the children inside the box.
+//
+// For example: "div.display-box > div.child-box" would get the box flex mixin.
+box-flex(flex = $default-box-flex)
+  $exp-box(box-flex, flex)
+
+// mixin which takes an int argument for box flex grouping
+box-flex-group(group = $default-box-flex-group)
+  $exp-box(box-flex-group, group)
+
+// mixin which takes an int argument for ordinal grouping and reordering
+box-ordinal-group(group = $default-box-ordinal-group)
+  $exp-box(box-ordinal-group, group)
+
+// mixin for box-direction [ normal | reverse | inherit ]
+box-direction(direction = $default-box-direction)
+  $exp-box(box-direction, direction)
+
+// mixin for box lines [ single | multiple ]
+box-lines(lines = $default-box-lines)
+  $exp-box(box-lines, lines)
+
+// mixin for box pack [ start | end | center | justify ]
+box-pack(pack = $default-box-pack)
+  $exp-box(box-pack, pack)
+
+
+.example
+  display-box()
+  box-orient(horizontal)
+  box-align(stretch)
+  box-direction(reverse)
+  height: 200px
+  width: 100%
+  .content, .sidebar
+    padding: 20px
+  .content
+    box-flex(4)
+    background-color: #C5C1B4
+  .sidebar
+    box-flex(1)
+    background-color: #375F99
+    margin-right: 1px
