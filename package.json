@@ -6,6 +6,9 @@
   "scripts": {
     "test": "make test"
   },
+  "bin": {
+    "stampus": "./bin/stampus"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/ninjaas/stampus.git"
