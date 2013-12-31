@@ -1,4 +1,4 @@
-@import "stampus/support"
+@import "support"
 
 join(delim, strings...)
   buf = ''
@@ -20,7 +20,7 @@ experimental($property, $value,
   $khtml    = $experimental-support-for-khtml,
   $official = true
 ) {
-  //$value = unquote($value) if typeof($value) == 'string'
+  $value = unquote($value) if typeof($value) == 'string'
   if $moz     and $experimental-support-for-mozilla   {    -moz-{$property} : $value; }
   if $webkit  and $experimental-support-for-webkit    { -webkit-{$property} : $value; }
   if $o       and $experimental-support-for-opera     {      -o-{$property} : $value; }
