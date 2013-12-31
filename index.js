@@ -1,16 +1,16 @@
 'use strict'
 
 
-var mainProject = __dirname + '/frameworks/stampus/stylesheets';
-var styl = mainProject+'/stampus.styl';
+var stylPath = './frameworks/stampus/stylesheets';
+var stampusFile = stylPath +'/stampus.styl';
 var functions =  './lib/stampus/extensions/functions';
 
 var stylus = require('stylus')
-    , str = require('fs').readFileSync(styl, 'utf8');
+    , str = require('fs').readFileSync(stampusFile, 'utf8');
 
 var paths = [
     __dirname
-  , mainProject
+  , stylPath
 ];
 
 var colors = require(functions+'/colors');
@@ -29,7 +29,7 @@ var font_file = function(style){
 };
 
 stylus(str)
-  .set('filename', styl)
+  .set('filename', stampusFile)
   .set('paths', paths)
   .include(functions)
   .use(color)
@@ -38,4 +38,3 @@ stylus(str)
     if (err) throw err;
     console.log(css);
   });
-
