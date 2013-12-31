@@ -1,0 +1,68 @@
+@import "shared"
+
+// Column support is imlemented uniformly across browsers thus far. Convenience mixin.
+$exp-column(prop, val)
+  experimental(prop, val,
+    'moz', 'webkit', 'o', 'ms', !'khtml', 'official'
+  )
+
+
+// Specify the shorthand `columns` property.
+//
+// Example:
+//
+//     columns(20em 2)
+columns()
+  $exp-column(columns, arguments)
+
+
+// Specify the number of columns
+column-count()
+  $exp-column(column-count, arguments)
+
+
+// Specify the gap width between columns e.g. `20px`
+column-gap()
+  $exp-column(column-gap, arguments)
+
+
+// Specify the column width e.g. `100px`
+column-width()
+  $exp-column(column-width, arguments)
+
+
+// Specify how many columns an element should span across.
+//
+// * legal values are 1, all
+column-span()
+  $exp-column(column-span, arguments)
+
+
+// Specify the width of the rule between columens e.g. `1px`
+column-rule-width()
+  $exp-column(column-rule-width, arguments)
+
+
+// Specify the style of the rule between columns e.g. `dotted`.
+// This works like border-style.
+column-rule-style()
+  $exp-column(column-rule-style, arguments)
+
+
+// Specify the color of the rule between columns e.g. `blue`.
+// This works like border-color.
+column-rule-color()
+  $exp-column(column-rule-color, arguments)
+
+
+// Mixin encompassing all column rule properties
+// For example:
+//
+//     column-rule(1px, solid, #c00)
+//
+// Or the values can be space separated:
+//
+//     column-rule(1px solid #c00)
+// Shorthand rule for column-rule: width, style, color
+column-rule()
+  $exp-column(column-rule, arguments)
